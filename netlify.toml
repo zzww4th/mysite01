@@ -1,12 +1,19 @@
+# ------------------------------
+# Netlify 配置文件（TOML）
+# 必须保存为 UTF?8（无 BOM）
+# ------------------------------
+
 [functions]
   directory = "functions"
-ECHO 处于关闭状态。
+
+# 受保护区域 (role?based redirect)
 [[redirects]]
   from = "/protected/*"
   status = 200
   force = true
   conditions = { Role = ["member"] }
-ECHO 处于关闭状态。
+
+# 未登录时把请求导向登录页面（via function to keep原始路径）
 [[redirects]]
   from = "/protected/*"
   to = "/.netlify/functions/redirect"

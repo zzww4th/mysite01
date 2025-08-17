@@ -1,15 +1,14 @@
 {
   "name": "my-protected-site",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    // ---------- 这里一定要有 ----------
+    "build": "echo \"nothing to build – static files are already in /public\""
+    // -------------------------------------------------
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.0",
+    "axios": "^1.7.0"
   }
 }

@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    // ---------- 这里一定要有 ----------
     "build": "echo \"nothing to build – static files are already in /public\""
-    // -------------------------------------------------
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.0",

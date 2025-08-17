@@ -1,21 +1,30 @@
-# ------------------------------
-# Netlify 配置文件（TOML）
-# 必须保存为 UTF?8（无 BOM）
-# ------------------------------
+# -------------------------------------------------
+# Netlify 配置文件（必须保存为 UTF?8，且没有多余字符）
+# -------------------------------------------------
 
+# 1?? Build 相关（这里的 static site 只需要把 public 目录发布）
+[build]
+  # 站点构建时执行的命令（可以是空脚本）
+  command   = "npm run build"
+  # 构建完成后要发布（复制到 CDN）的目录
+  publish   = "public"
+  #（可选）函数目录，默认也是 functions
+  functions = "functions"
+
+# 2?? Functions 目录（如果上面的 [build] 已经写了 functions，这里可以省略）
 [functions]
   directory = "functions"
 
-# 受保护区域 (role?based redirect)
+# 3?? 受保护区域的 Role?based Redirect
 [[redirects]]
-  from = "/protected/*"
-  status = 200
-  force = true
+  from       = "/protected/*"
+  status     = 200                # 成功返回原始文件（不做跳转）
+  force      = true
   conditions = { Role = ["member"] }
 
-# 未登录时把请求导向登录页面（via function to keep原始路径）
+# 4?? 未登录时把请求导向登录页面（利用 redirect 函数保留原始路径）
 [[redirects]]
-  from = "/protected/*"
-  to = "/.netlify/functions/redirect"
+  from   = "/protected/*"
+  to     = "/.netlify/functions/redirect"
   status = 200
-  force = true
+  force  = true

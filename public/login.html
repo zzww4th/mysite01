@@ -1,0 +1,18 @@
+<DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>登录</title></head>
+<body>
+<form action="/.netlify/functions/login" method="POST">
+  <input type="password" name="password" placeholder="密码" required />
+  <input type="hidden" name="redirect" value="" />
+  <button type="submit">获取访问权限</button>
+</form>
+<script>
+  const url = new URL(location);
+  const r = url.searchParams.get('redirect');
+  if (r) document.querySelector('input[name=redirect]').value = decodeURIComponent(r);
+  if (url.searchParams.get('error')) {
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[functions]
+  directory = "functions"
+ECHO 处于关闭状态。
+[[redirects]]
+  from = "/protected/*"
+  status = 200
+  force = true
+  conditions = { Role = ["member"] }
+ECHO 处于关闭状态。
+[[redirects]]
+  from = "/protected/*"
+  to = "/.netlify/functions/redirect"
+  status = 200
+  force = true
